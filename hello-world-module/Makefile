@@ -3,6 +3,8 @@ obj-m += hello-2.o
 obj-m += hello-3.o
 obj-m += hello-4.o
 obj-m += hello-5.o
+obj-m += hello-6.o
+hello-6-objs := hello-6-start.o hello-6-stop.o
 
 PWD := $(CURDIR)
 
