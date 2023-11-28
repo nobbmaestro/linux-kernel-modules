@@ -1,4 +1,5 @@
 obj-m += procfs1.o
+obj-m += procfs2.o
 
 PWD := $(CURDIR)
 
