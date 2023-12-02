@@ -15,6 +15,7 @@
 #include <linux/uaccess.h>
 #include <linux/version.h>
 #include <linux/wait.h>
+#include <stdlib.h>
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 6, 0)
 #define HAVE_PROC_OPS
@@ -34,9 +35,9 @@ static struct proc_dir_entry *our_proc_file;
  * function.
  */
 static ssize_t module_output(struct file *file, /* See include/linux/fs.h */
-							  char __user *buf,  /* The buffer to user data to (in the user segment) */
-							  size_t len,        /* The legnth of the buffer */
-							  loff_t *offset)
+							 char __user *buf,  /* The buffer to user data to (in the user segment) */
+							 size_t len,        /* The legnth of the buffer */
+							 loff_t *offset)
 {
 	static int finished = 0;
 	int i;
@@ -174,7 +175,7 @@ static int module_close(struct inode *inode, struct file *file)
  * functions.
  */
 
-/* FIle operations for our proc file. This is where we place pointers to all
+/* File operations for our proc file. This is where we place pointers to all
  * the functions called when somebody tries to do something to our file. NULL
  * means we don't want to deal with something.
  */

@@ -18,6 +18,7 @@ static int machine_crank_thread(void *arg)
 	pr_info("Turn the crank\n");
 
 	complete_all(&crank_comp);
+
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 17, 0)
 	kthread_complete_and_exit(&crank_comp, 0);
 #else
@@ -32,6 +33,7 @@ static int machine_flywheel_spinup_thread(void *arg)
 	pr_info("Flywheel spins up\n");
 
 	complete_all(&flywheel_comp);
+
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 17, 0)
 	kthread_complete_and_exit(&flywheel_comp, 0);
 #else
